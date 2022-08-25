@@ -1,6 +1,6 @@
-require './nameable'
+require_relative 'nameable'
 
-class Decorator < Nameable
+class BaseDecorator < Nameable
   attr_accessor :nameable
 
   def initialize(nameable)
