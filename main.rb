@@ -1,43 +1,54 @@
-require_relative './app'
-def main
-  app = App.new
-  status = true
-  puts 'Welcome to School Library App!'
-  while status
-    puts
-    puts 'Please choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
-    puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
+require './person'
+require './rental'
+require './book'
+require './app'
 
-    option = gets.chomp
+class App
+  def self.menu
+    puts 'Welcome to the School Library App!'
+    puts "\n"
+    puts 'Please choose an option by entering a number: '
 
-    case option
-    when '1'
-      app.all_books
-    when '2'
-      app.all_people
-    when '3'
-      app.create_person
-    when '4'
-      app.create_book
-    when '5'
-      app.create_rental
-    when '6'
-      app.all_rentals_id
-    when '7'
-      puts 'Thank you for using this app!'
-      puts
-      status = false
+    choices = ['1 - List all book',
+               '2 - List all People',
+               '3 - Create a person',
+               '4 - Create a book',
+               '5 - Create a rental',
+               '6 - List all rentals for a given person id',
+               '7 - Exit']
+
+    choices.each { |choice| puts choice.to_s }
+
+    Integer(gets.chomp)
+  end
+
+  run = Library.new
+
+  loop do
+    case menu
+    when 1
+      run.list_books
+    when 2
+      run.list_people
+    when 3
+      run.create_person
+    when 4
+      run.create_book
+    when 5
+      run.create_rental
+    when 6
+      run.list_rentals
+    when 7
+      puts 'Thank you for using the app!'
+      exit
     else
-      puts 'Sorry, you choose a wrong option'
-      puts
+      puts 'Choose a number between 1 to 7'
     end
   end
+end
+
+def main
+  App.new
 end
 
 main
