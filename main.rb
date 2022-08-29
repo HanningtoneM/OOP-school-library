@@ -1,57 +1,55 @@
-require_relative 'app'
+require './app'
 
-class Main
-  def initialize
-    @app = App.new
+class App
+  def self.main_menu
+    puts 'Welcome to the School Library App!'
+    puts "\n"
+    puts 'Please choose an option by entering a number: '
+
+    @list = {
+      '1' => 'List all books',
+      '2' => 'List all people',
+      '3' => 'Create a person',
+      '4' => 'Create a book',
+      '5' => 'Create a rental',
+      '6' => 'List all rentals for a given person id',
+      '7' => 'Exit'
+    }
+
+    @list.each do |index, string|
+      puts "#{index} - #{string}"
+    end
+
+    Integer(gets.chomp)
   end
 
-  def display_list
-    puts "
-    Please choose an option by entering a number:
-    1- List all books.
-    2- List all people.
-    3- Create a person (teacher or student, not a plain Person).
-    4- Create a book.
-    5- Create a rental.
-    6- List all rentals for a given person id.
-    7- Exit"
-  end
+  run = Apps.new
 
-  def execute_option(option)
-    case option
+  loop do
+    case main_menu
     when 1
-      @app.list_all_books
+      run.list_books
     when 2
-      @app.list_all_people
+      run.list_people
     when 3
-      @app.create_person
+      run.create_person
     when 4
-      @app.create_book
+      run.create_book
     when 5
-      @app.create_rental
+      run.create_rental
     when 6
-      @app.display_rentals_by_person_id
+      run.list_rentals
+    when 7
+      puts 'Thank you for using the app!'
+      exit
     else
-      puts 'Not a valid option'
+      puts 'Choose a number between 1 to 7'
     end
-  end
-
-  def choose_option
-    loop do
-      display_list
-      option = gets.chomp.to_i
-      break if option == 7
-
-      execute_option(option)
-    end
-  end
-
-  def main
-    puts 'Welcome to School library app!'
-    choose_option
-    puts 'Thank you for using School library app!'
   end
 end
 
-main = Main.new
-main.main
+def main
+  App.new
+end
+
+main

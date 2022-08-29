@@ -1,14 +1,20 @@
-require_relative 'person'
+require_relative './person'
 
+# teacher represents a teacher in the library
 class Student < Person
-  attr_accessor :classroom
+  attr_reader :classroom
 
-  def initialize(age, classroom, name = 'Unknown', parent_permission: true)
-    super(age, name, parent_permission: parent_permission)
-    classroom.add_student(self)
+  def initialize(age, name = 'Unknown')
+    @classroom = classroom
+    super(age, name)
   end
 
-  def play_hooky
+  def play_hookey
     "¯\(ツ)/¯"
+  end
+
+  def classroom=(classroom)
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 end
