@@ -1,19 +1,19 @@
-require './person'
-require './classroom'
+require_relative 'person'
 
 class Student < Person
   attr_reader :classroom
 
-  def initialize(age, name = 'unknown', parent_permission: true)
+  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
     super(age, name, parent_permission: parent_permission)
-  end
-
-  def play_hooky
-    "¯\(ツ)/¯"
+    @classroom = classroom
   end
 
   def classroom=(classroom)
     @classroom = classroom
-    classroom.students.push(self) unless classroom.students.include?(self)
+    classroom.students.push(self)
+  end
+
+  def play_hooky
+    "¯\(ツ)/¯"
   end
 end
