@@ -3,6 +3,7 @@ class Main
   def initialize
     @app = App.new
   end
+
   def options
     puts "
         1 - List all books.
@@ -14,6 +15,7 @@ class Main
         7 - Exit
         "
   end
+
   def welcome
     puts 'Welcome to School Library App!'
     puts ''
@@ -22,6 +24,7 @@ class Main
       options
       user_option = gets.chomp
       break if user_option == '7'
+
       @app.get_option(user_option)
     end
     puts 'Thank you for using the Library app!'
