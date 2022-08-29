@@ -11,6 +11,7 @@ class App
     @rentals = []
     @classroom_one = Classroom.new('A')
   end
+
   def get_option(user_option)
     case user_option
     when '1'
@@ -27,18 +28,21 @@ class App
       list_rentals
     end
   end
+
   def list_books
     puts 'The are no books registered! Please add a student or teacher.' if @books.empty?
     @books.each do |book|
       puts "Title: #{book.title} Author: #{book.author}"
     end
   end
+
   def list_people
     puts 'The are no people registered! Please add a student or teacher.' if @people.empty?
     @people.map do |person|
       puts "[#{person.class}] Id:#{person.id} Name:#{person.name} Age: #{person.age}"
     end
   end
+
   def create_person
     puts 'Do you want to create a student(1) or a teacher(2)?[input number]:'
     user_option = gets.chomp
@@ -65,6 +69,7 @@ class App
       puts 'Teacher created successfully!'
     end
   end
+
   def create_book
     puts 'Please enter the title of the book:'
     title = gets.chomp
@@ -74,6 +79,7 @@ class App
     @books.push(book)
     puts 'Book created successfully!'
   end
+
   def create_rental
     puts 'Select a book from the list by index(not id):'
     @books.each_with_index { |book, index| puts "#{index} Title: #{book.title}, Author: #{book.author}" }
@@ -89,6 +95,7 @@ class App
     @rentals.push(rental)
     puts 'Rental created successfully!'
   end
+
   def list_rentals
     puts 'ID of person:'
     person_id = gets.chomp.to_i
