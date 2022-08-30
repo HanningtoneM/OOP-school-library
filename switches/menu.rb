@@ -33,8 +33,6 @@ class Menu
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-
   def execute_inputs
     input = Integer(gets.chomp)
     case input
@@ -54,8 +52,6 @@ class Menu
       puts 'Kindly enter a number between 1-7'
     end
   end
-
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   def list_books
     puts 'Books 📚'
