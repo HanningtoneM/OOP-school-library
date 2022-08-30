@@ -14,6 +14,7 @@ module RentalsController
     end
     store
   end
+
   def save_rentals
     store = []
     @rentals.each do |rental|
@@ -21,10 +22,13 @@ module RentalsController
     end
     File.write('./storage/rentals.json', store.to_json)
   end
+
   private
+
   def book(id)
     @books.each { |book| return book if book.id == id }
   end
+
   def person(id)
     @people.each { |person| return person if person.id == id }
   end

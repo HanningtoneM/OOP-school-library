@@ -21,6 +21,7 @@ module PersonsController
     end
     store
   end
+
   def save_persons
     store = []
     @people.each do |person|
@@ -30,6 +31,7 @@ module PersonsController
                    parent_permission: person.parent_permission }
       end
       next unless person.is_a?(Teacher)
+
       store << { id: person.id, specialization: person.specialization,
                  age: person.age, name: person.name,
                  parent_permission: person.parent_permission, className: person.class }
@@ -37,15 +39,3 @@ module PersonsController
     File.write('./storage/persons.json', store.to_json)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
