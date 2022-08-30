@@ -1,8 +1,8 @@
-require_relative 'nameable'
+require './switches/nameable'
 
 class Person < Nameable
   attr_reader :id
-  attr_accessor :name, :age, :books, :rentals
+  attr_accessor :name, :age, :books, :rentals, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
