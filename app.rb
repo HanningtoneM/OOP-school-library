@@ -1,23 +1,12 @@
-require_relative 'book'
-require_relative 'person'
-require_relative 'student'
-require_relative 'teacher'
-require_relative 'rental'
-require_relative 'classroom'
-require_relative 'menu'
-require_relative 'create_rental'
+require './switches/menu'
 
 class App
   def initialize()
-    @people = []
-    @books = []
-    @rentals = []
-    @main_classroom = Classroom.new('Main Class')
-    @menu = Menu.new.inputs
+    @menu = Menu.new
   end
 
   def start
     puts 'Welcome to School Library App!'
-    inputs
+    @menu.inputs
   end
 end
