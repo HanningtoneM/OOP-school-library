@@ -1,4 +1,5 @@
 require_relative '../book'
+require_relative '../rental'
 require 'yaml'
 
 describe Book do
@@ -13,4 +14,8 @@ describe Book do
   it "should print the book\'s author" do
     @book.author.should eql 'author'
   end
+
+  it 'should respond to rentals' do
+      expect(@book).to respond_to(:rentals)
+   end
 end
