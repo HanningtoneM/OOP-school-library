@@ -9,7 +9,7 @@ module BooksPersistence
     books.each do |book|
       data << { title: book.title, author: book.author }
     end
-    File.write(file, JSON.generate(data))   
+    File.write(file, JSON.generate(data))
   end
 
   def load_books
