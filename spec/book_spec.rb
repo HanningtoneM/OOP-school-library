@@ -16,6 +16,6 @@ describe Book do
   end
 
   it 'should respond to rentals' do
-      expect(@book).to respond_to(:rentals)
-   end
+    expect(@book).to respond_to(:rentals)
+  end
 end
